@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::view('/about','about');
+Route::view('/postform','postform');
