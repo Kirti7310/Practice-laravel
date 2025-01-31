@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\PostForm;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\StudentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +22,14 @@ Route::get('/', function () {
 });
 
 Route::view('/about','about');
-Route::view('/postform','postform');
+Route::get('/postform',[PostForm::class,'show'])->name('show');
+Route::post('/submitform',[PostForm::class,'store'])->name('save');
+
+
+Route::controller(StudentController::class)->group(function()
+{
+    Route::get('/studentadd','add');
+Route::get('/studentsort','sort');
+
+
+});
